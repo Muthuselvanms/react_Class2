@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background-color: black;
+    position: sticky;
+    top: 0;
+}
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    height: 50px;
+    align-items: center;
+}
+li a{
+    color: red;
+    text-decoration: none;
+    font-size: 25px;
+}
