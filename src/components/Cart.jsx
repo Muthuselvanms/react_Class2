@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FakeStore } from '../App2'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Cart = () => {
   const context = useContext(FakeStore)
   // context = {products,setproducts,cart,setcart,cartValue,setcartValue}
 
   const [total, settotal] = useState(0)
+
+  const nav = useNavigate()
 
   useEffect(()=>{
     const newTotal = context.cart.reduce((sum,item)=>{
@@ -41,6 +43,13 @@ const Cart = () => {
         context.setcartValue(updatedCart.length)
   }
 
+  const handleBuy = () =>{
+    alert("your order is placed")
+    context.setcart([])
+    context.setcartValue(0)
+    nav('/')
+  }
+
   return (
     <>
     <div>
@@ -62,6 +71,7 @@ const Cart = () => {
           )
         })}
         <h2>Total Amount : {total}</h2>
+        <button onClick={handleBuy}>Buy Now</button>
       </div>
       </> 
       : 
